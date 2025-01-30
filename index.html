@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Tracking System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="loading-screen">
+        <div class="spinner"></div>
+        <p class="loading-text">Loading... Please wait</p>
+    </div>
+    
+
+    <div class="content" style="display:ease;">
+        <header>
+            <h1>WELCOME</h1>
+        </header>
+        <p>Fill out the form below to submit student information.</p>
+        
+        <form id="student-form" name="student-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="student-form">
+            
+            <div class="form-group">
+                <label for="name">Student Name:</label>
+                <input type="text" id="name" name="name" placeholder="Kaveesha Chamod" required>
+                <small class="error-message"></small>
+            </div>
+        
+            <div class="form-group">
+                <label for="school">School:</label>
+                <input type="text" id="school" name="school" placeholder="Nalanda College" required>
+                <small class="error-message"></small>
+            </div>
+        
+            <div class="form-group">
+                <label for="grade">Grade:</label>
+                <input type="text" id="grade" name="grade" placeholder="12" required>
+                <small class="error-message"></small>
+            </div>
+        
+            <div class="form-group">
+                <label for="achievements">Achievements:</label>
+                <textarea id="achievements" name="achievements" rows="3" placeholder="All Island Winner" required></textarea>
+                <small class="error-message"></small>
+            </div>
+        
+            <div class="form-group">
+                <label for="extracurricular">Extracurricular Activities:</label>
+                <textarea id="extracurricular" name="extracurricular" rows="3" placeholder="Football, Member of Leo Club" required></textarea>
+                <small class="error-message"></small>
+            </div>
+        
+            <button type="submit">Submit</button>
+        </form>
+        
+        
+    </div>    
+    <section id="student-data-section">
+        <h2>Student Data - LIVE UPDATE</h2>
+    
+        <!-- Add a filter input -->
+        <input type="text" id="filter-input" placeholder="Search student..." onkeyup="filterTable()">
+    
+        <table id="student-table">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Name 🔽</th>
+                    <th onclick="sortTable(1)">School 🔽</th>
+                    <th onclick="sortTable(2)">Grade 🔽</th>
+                    <th onclick="sortTable(3)">Achievements 🔽</th>
+                    <th onclick="sortTable(4)">Extracurricular Activities 🔽</th>
+                </tr>
+            </thead>
+            <tbody id="student-table-body">
+            </tbody>
+        </table>
+    </section>
+    
+    
+    <script src="script.js"></script>
+</body>
+</html>
