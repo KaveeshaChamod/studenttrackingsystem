@@ -34,9 +34,8 @@ document.getElementById('student-form').addEventListener('submit', function(e) {
     validateField(achievements, 5, "Enter at least 5 characters");
     validateField(extracurricular, 5, "Enter at least 5 characters");
 
-    if (!isValid) return; // Stop form submission if invalid
+    if (!isValid) return;
 
-    // Create a new row in the table
     const tableBody = document.getElementById("student-table-body");
     const newRow = tableBody.insertRow();
     newRow.insertCell(0).textContent = name.value;
@@ -45,17 +44,15 @@ document.getElementById('student-form').addEventListener('submit', function(e) {
     newRow.insertCell(3).textContent = achievements.value;
     newRow.insertCell(4).textContent = extracurricular.value;
 
-    // Clear the form after successful submission
+    
     document.getElementById('student-form').reset();
 
     alert(`Student Information Submitted:\n\nName: ${name.value}\nGrade: ${grade.value}\nAchievements: ${achievements.value}\nExtracurricular: ${extracurricular.value}`);
 });
 
-// Sort table by column index
 function sortTable(columnIndex) {
     let table = document.getElementById("student-table");
-    let rows = Array.from(table.rows).slice(1); // Exclude header
-
+    let rows = Array.from(table.rows).slice(1);
     let isAscending = table.dataset.sortOrder !== "asc";
     table.dataset.sortOrder = isAscending ? "asc" : "desc";
 
@@ -65,17 +62,16 @@ function sortTable(columnIndex) {
         return isAscending ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
     });
 
-    rows.forEach(row => table.appendChild(row)); // Reorder rows
+    rows.forEach(row => table.appendChild(row));
 }
 
-// Filter student table
 function filterTable() {
     let filter = document.getElementById("filter-input").value.toLowerCase();
     let tableBody = document.getElementById("student-table-body");
     let rows = tableBody.getElementsByTagName("tr");
 
     for (let row of rows) {
-        let nameCell = row.cells[0]; // First column (Name)
+        let nameCell = row.cells[0];
         if (nameCell) {
             let name = nameCell.textContent.toLowerCase();
             row.style.display = name.includes(filter) ? "" : "none";
@@ -83,5 +79,4 @@ function filterTable() {
     }
 }
 
-// Load student data on page load
 window.addEventListener("DOMContentLoaded", loadStudentData);
